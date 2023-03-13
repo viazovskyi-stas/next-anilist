@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from './page.module.css'
+import { } from "@/graphql/generated"
 
 const inter = Inter({ subsets: ['latin'] })
 

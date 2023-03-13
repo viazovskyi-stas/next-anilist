@@ -1,0 +1,12 @@
+query GetAnimeList($page: Int) {
+  Page(page: $page) {
+    media {
+      title {
+        english
+      }
+      coverImage {
+        large
+      }
+    }
+  }
+}

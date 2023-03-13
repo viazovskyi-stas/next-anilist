@@ -1,0 +1,25 @@
+overwrite: true
+ignoreNoDocuments: true
+schema: https://graphql.anilist.co
+documents: './graphql/documents/**/*.gql'
+generates:
+  ./graphql/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
+    config: {
+      fetcher: {
+        endpoint: 'https://graphql.anilist.co',
+        fetchParams: {
+#          headers: {
+#            'My-Header': 'SomeValue',
+#            'Content-type': 'application/json',
+#          }
+        }
+      }
+    }
+config:
+  withHOC: true
+  withHooks: true
+

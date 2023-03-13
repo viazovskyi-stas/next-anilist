@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-gql": "graphql-codegen --config graphql/codegen.yaml && npx prettier --write ./graphql/generated.ts"
   },
   "dependencies": {
     "classnames": "^2.3.2",
@@ -14,9 +15,13 @@
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "graphql": "^16.6.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.16.4",
+    "@graphql-codegen/client-preset": "^1.2.6",
+    "@graphql-codegen/typescript-react-query": "^4.1.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
