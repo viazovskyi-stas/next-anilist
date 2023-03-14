@@ -41,15 +41,12 @@ export default function AnimeList() {
     const {
       target: { value }
     } = event;
-    setGenre(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
-    );
+    setGenre(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleChangeSort = () => {
-    setSort(prev => !prev)
-  }
+    setSort((prev) => !prev);
+  };
 
   return (
     <main className={styles.main}>
