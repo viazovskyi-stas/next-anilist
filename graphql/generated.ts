@@ -4557,6 +4557,7 @@ export type GetAnimeListQueryVariables = Exact<{
   perPage?: InputMaybe<Scalars['Int']>;
   search?: InputMaybe<Scalars['String']>;
   genreIn?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  sort?: InputMaybe<Array<InputMaybe<MediaSort>> | InputMaybe<MediaSort>>;
 }>;
 
 export type GetAnimeListQuery = {
@@ -4577,9 +4578,9 @@ export type GetAnimeListQuery = {
 };
 
 export const GetAnimeListDocument = `
-    query GetAnimeList($page: Int, $perPage: Int, $search: String, $genreIn: [String]) {
+    query GetAnimeList($page: Int, $perPage: Int, $search: String, $genreIn: [String], $sort: [MediaSort]) {
   Page(page: $page, perPage: $perPage) {
-    media(search: $search, genre_in: $genreIn) {
+    media(search: $search, genre_in: $genreIn, sort: $sort) {
       title {
         english
       }

@@ -1,6 +1,6 @@
-query GetAnimeList($page: Int, $perPage: Int, $search: String, $genreIn: [String]) {
+query GetAnimeList($page: Int, $perPage: Int, $search: String, $genreIn: [String], $sort: [MediaSort]) {
     Page(page: $page, perPage: $perPage) {
-        media(search: $search, genre_in: $genreIn) {
+        media(search: $search, genre_in: $genreIn, sort: $sort) {
             title {
                 english
             }
@@ -18,3 +18,5 @@ query GetAnimeList($page: Int, $perPage: Int, $search: String, $genreIn: [String
         }
     }
 }
+
+scalar MediaSort

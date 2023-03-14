@@ -1,6 +1,6 @@
 'use client';
 import styles from './page.module.css';
-import { useGetAnimeListQuery } from '@/graphql/generated';
+import { useGetAnimeListQuery, MediaSort } from '@/graphql/generated';
 import { Skeletons, Anime } from '@/components';
 import {
   TextField,
@@ -18,14 +18,15 @@ import { genres } from '@/src/utils';
 export default function AnimeList() {
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
   const [searchText, setSearchText] = useState('');
+  const [sort, setSort] = useState(true);
   const [genre, setGenre] = useState([]);
 
   // TODO add error handle
   const { data, isLoading, error } = useGetAnimeListQuery({
     perPage: 10,
     search: searchQuery,
-    genreIn: genre.length ? genre : null
-    // sort: [MediaSort.PopularityDesc]
+    genreIn: genre.length ? genre : null,
+    sort: [sort ? MediaSort.Popularity : MediaSort.PopularityDesc]
   });
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +47,9 @@ export default function AnimeList() {
     );
   };
 
-  console.log(genre);
+  const handleChangeSort = () => {
+    setSort(prev => !prev)
+  }
 
   return (
     <main className={styles.main}>
@@ -66,6 +69,15 @@ export default function AnimeList() {
             sx={{ height: '100%', marginLeft: 1 }}
           >
             Search
+          </Button>
+        </div>
+        <div>
+          <Button
+            onClick={handleChangeSort}
+            variant='contained'
+            sx={{ height: '100%', marginLeft: 1 }}
+          >
+            Sort by popularity {sort ? 'ASC' : 'DESK'}
           </Button>
         </div>
         <div>
