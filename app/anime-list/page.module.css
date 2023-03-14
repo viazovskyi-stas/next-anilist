@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem;
+  min-height: 100vh;
+}
+.filterGroup {
+  width: 100%;
+  padding: 50px 20px;
+  display: flex;
+}
+
+.filterGroup input {
+  color: white;
+}
+
+.filterGroup label {
+  /*color: white;*/
+}

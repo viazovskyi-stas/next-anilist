@@ -12,10 +12,10 @@ generates:
       fetcher: {
         endpoint: 'https://graphql.anilist.co',
         fetchParams: {
-#          headers: {
-#            'My-Header': 'SomeValue',
-#            'Content-type': 'application/json',
-#          }
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
         }
       }
     }

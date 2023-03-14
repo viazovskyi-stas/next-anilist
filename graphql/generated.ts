@@ -9,7 +9,7 @@ function fetcher<TData, TVariables>(query: string, variables?: TVariables) {
   return async (): Promise<TData> => {
     const res = await fetch('https://graphql.anilist.co', {
       method: 'POST',
-      ...{},
+      ...{ headers: { 'Content-Type': 'application/json', Accept: 'application/json' } },
       body: JSON.stringify({ query, variables })
     });
 
@@ -4554,6 +4554,9 @@ export type YearStats = {
 
 export type GetAnimeListQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']>;
+  perPage?: InputMaybe<Scalars['Int']>;
+  search?: InputMaybe<Scalars['String']>;
+  genreIn?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
 }>;
 
 export type GetAnimeListQuery = {
@@ -4562,22 +4565,35 @@ export type GetAnimeListQuery = {
     __typename?: 'Page';
     media?: Array<{
       __typename?: 'Media';
+      id: number;
+      episodes?: number | null;
+      type?: MediaType | null;
+      genres?: Array<string | null> | null;
       title?: { __typename?: 'MediaTitle'; english?: string | null } | null;
       coverImage?: { __typename?: 'MediaCoverImage'; large?: string | null } | null;
     } | null> | null;
+    pageInfo?: { __typename?: 'PageInfo'; total?: number | null; perPage?: number | null } | null;
   } | null;
 };
 
 export const GetAnimeListDocument = `
-    query GetAnimeList($page: Int) {
-  Page(page: $page) {
-    media {
+    query GetAnimeList($page: Int, $perPage: Int, $search: String, $genreIn: [String]) {
+  Page(page: $page, perPage: $perPage) {
+    media(search: $search, genre_in: $genreIn) {
       title {
         english
       }
       coverImage {
         large
       }
+      id
+      episodes
+      type
+      genres
+    }
+    pageInfo {
+      total
+      perPage
     }
   }
 }

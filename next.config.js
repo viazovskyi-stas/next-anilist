@@ -6,7 +6,7 @@ const nextConfig = {
     appDir: true
   },
   includePaths: [path.join(__dirname, 'styles')],
-  reactStrictMode: true,
+  // reactStrictMode: true,
   swcMinify: true,
   images: {
     domains: ['s4.anilist.co'],
