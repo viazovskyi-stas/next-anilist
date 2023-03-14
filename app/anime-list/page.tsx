@@ -117,7 +117,7 @@ export default function AnimeList() {
       </div>
       <div className="search-results-container">
         <Typography variant='title-1' tag='h2'>
-          Results {data?.Page?.pageInfo?.total}
+          Results: {data?.Page?.pageInfo?.total}
         </Typography>
       </div>
 
