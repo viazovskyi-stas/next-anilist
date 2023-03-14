@@ -18,7 +18,7 @@ import { genres } from '@/src/utils';
 export default function AnimeList() {
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
   const [searchText, setSearchText] = useState('');
-  const [sort, setSort] = useState(true);
+  const [sort, setSort] = useState(false);
   const [genre, setGenre] = useState([]);
 
   // TODO add error handle
@@ -69,15 +69,6 @@ export default function AnimeList() {
           </Button>
         </div>
         <div>
-          <Button
-            onClick={handleChangeSort}
-            variant='contained'
-            sx={{ height: '100%', marginLeft: 1 }}
-          >
-            Sort by popularity {sort ? 'ASC' : 'DESK'}
-          </Button>
-        </div>
-        <div>
           <FormControl sx={{ ml: 1, width: 200, height: 40 }}>
             <InputLabel id='demo-multiple-chip-label' sx={{ color: '#1976d2' }}>
               Genre
@@ -111,6 +102,15 @@ export default function AnimeList() {
             </Select>
           </FormControl>
         </div>
+        <Box sx={{ marginLeft: 'auto'}}>
+          <Button
+            onClick={handleChangeSort}
+            variant='contained'
+            sx={{ height: '100%', marginLeft: 1 }}
+          >
+            Sort by popularity {sort ? 'ASC' : 'DESK'}
+          </Button>
+        </Box>
       </div>
 
       <div className='list-container'>
