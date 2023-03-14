@@ -3,7 +3,7 @@ import styles from './page.module.css';
 
 import React, { useState } from 'react';
 import { useGetAnimeListQuery, MediaSort } from '@/graphql/generated';
-import { Skeletons, Anime } from '@/components';
+import {Skeletons, Anime, Typography} from '@/components';
 import { genres } from '@/src/utils';
 import {
   TextField,
@@ -53,9 +53,13 @@ export default function AnimeList() {
 
   return (
     <main className={styles.main}>
+      <Typography variant='title-1' tag='h2'>
+        🚀 Anime list app
+      </Typography>
       <div className={styles.filterGroup}>
         <div>
           <TextField
+            name="search"
             value={searchText}
             onChange={handleSearchChange}
             label='Search'
@@ -64,6 +68,7 @@ export default function AnimeList() {
             sx={{ color: 'white' }}
           />
           <Button
+            id="search-submit-button"
             onClick={handleSearchQueryChange}
             variant='contained'
             sx={{ height: '100%', marginLeft: 1 }}

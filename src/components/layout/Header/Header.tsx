@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 
 export const Header: React.FC = () => (
   <header className={styles.header}>
-    <Link prefetch={false} href={ROUTES.ANIME_LIST}>
+    <Link prefetch={false} href={ROUTES.ROOT}>
       <Logo className={styles.logo} />
     </Link>
     <nav>

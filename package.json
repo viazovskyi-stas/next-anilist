@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "generate-gql": "graphql-codegen --config graphql/codegen.yaml && npx prettier --write ./graphql/generated.ts",
-    "format": "prettier --write **/**/*.{ts,tsx,css,scss}"
+    "format": "prettier --write **/**/*.{ts,tsx,css,scss}",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
