@@ -26,6 +26,7 @@
 .sub-title-2 {
   @extend .sub-title-1;
   font-size: 14px;
+  word-break: break-all;
 }
 
 .body-1 {

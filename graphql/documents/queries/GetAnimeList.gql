@@ -1,12 +1,20 @@
-query GetAnimeList($page: Int) {
-  Page(page: $page) {
-    media {
-      title {
-        english
-      }
-      coverImage {
-        large
-      }
+query GetAnimeList($page: Int, $perPage: Int, $search: String, $genreIn: [String]) {
+    Page(page: $page, perPage: $perPage) {
+        media(search: $search, genre_in: $genreIn) {
+            title {
+                english
+            }
+            coverImage {
+                large
+            }
+            id
+            episodes
+            type
+            genres
+        }
+        pageInfo {
+            total
+            perPage
+        }
     }
-  }
 }
