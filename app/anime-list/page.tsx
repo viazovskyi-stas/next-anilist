@@ -1,7 +1,10 @@
 'use client';
 import styles from './page.module.css';
+
+import React, { useState } from 'react';
 import { useGetAnimeListQuery, MediaSort } from '@/graphql/generated';
 import { Skeletons, Anime } from '@/components';
+import { genres } from '@/src/utils';
 import {
   TextField,
   Button,
@@ -9,11 +12,11 @@ import {
   Box,
   FormControl,
   InputLabel,
-  SelectChangeEvent
+  SelectChangeEvent,
+  OutlinedInput,
+  MenuItem,
+  Select
 } from '@mui/material';
-import React, { useState } from 'react';
-import { OutlinedInput, MenuItem, Select } from '@mui/material';
-import { genres } from '@/src/utils';
 
 export default function AnimeList() {
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
@@ -102,7 +105,7 @@ export default function AnimeList() {
             </Select>
           </FormControl>
         </div>
-        <Box sx={{ marginLeft: 'auto'}}>
+        <Box sx={{ marginLeft: 'auto' }}>
           <Button
             onClick={handleChangeSort}
             variant='contained'
