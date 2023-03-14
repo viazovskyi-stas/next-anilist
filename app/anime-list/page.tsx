@@ -22,7 +22,7 @@ export default function AnimeList() {
   const searchRef = useRef<HTMLInputElement | null>(null)
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
   const [sort, setSort] = useState(false);
-  const [genre, setGenre] = useState([]);
+  const [genre, setGenre] = useState<string[]>([]);
 
   // TODO add error handle
   const { data, isLoading, error } = useGetAnimeListQuery({
@@ -36,7 +36,7 @@ export default function AnimeList() {
     setSearchQuery(searchRef.current?.value || null);
   };
 
-  const handleChangeGenre = (event: SelectChangeEvent<any>) => {
+  const handleChangeGenre = (event: SelectChangeEvent<typeof genre>) => {
     const {
       target: { value }
     } = event;
