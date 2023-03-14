@@ -1,7 +1,7 @@
 'use client';
 import styles from './page.module.css';
 
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 import { useGetAnimeListQuery, MediaSort } from '@/graphql/generated';
 import {Skeletons, Anime, Typography} from '@/components';
 import { genres } from '@/src/utils';
@@ -19,8 +19,8 @@ import {
 } from '@mui/material';
 
 export default function AnimeList() {
+  const searchRef = useRef<HTMLInputElement | null>(null)
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
-  const [searchText, setSearchText] = useState('');
   const [sort, setSort] = useState(false);
   const [genre, setGenre] = useState([]);
 
@@ -32,12 +32,8 @@ export default function AnimeList() {
     sort: [sort ? MediaSort.Popularity : MediaSort.PopularityDesc]
   });
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
-  };
-
   const handleSearchQueryChange = () => {
-    setSearchQuery(searchText || null);
+    setSearchQuery(searchRef.current?.value || null);
   };
 
   const handleChangeGenre = (event: SelectChangeEvent<any>) => {
@@ -59,9 +55,8 @@ export default function AnimeList() {
       <div className={styles.filterGroup}>
         <div>
           <TextField
+            inputRef={searchRef}
             name="search"
-            value={searchText}
-            onChange={handleSearchChange}
             label='Search'
             color='primary'
             focused
@@ -119,6 +114,11 @@ export default function AnimeList() {
             Sort by popularity {sort ? 'ASC' : 'DESK'}
           </Button>
         </Box>
+      </div>
+      <div className="search-results-container">
+        <Typography variant='title-1' tag='h2'>
+          Results {data?.Page?.pageInfo?.total}
+        </Typography>
       </div>
 
       <div className='list-container'>
