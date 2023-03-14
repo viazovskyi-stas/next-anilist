@@ -1,5 +1,5 @@
 import ReactQueryWrapper from './ReactQueryWrapper';
-import Layout from '@/components/layout';
+import MuiWrapper from './MuiWrapper';
 
 export const metadata = {
   title: 'Anime List',
@@ -7,5 +7,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <ReactQueryWrapper>{children}</ReactQueryWrapper>;
+  return (
+    <MuiWrapper>
+      <ReactQueryWrapper>{children}</ReactQueryWrapper>
+    </MuiWrapper>
+  );
 }

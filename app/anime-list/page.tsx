@@ -1,9 +1,9 @@
 'use client';
 import styles from './page.module.css';
 
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import { useGetAnimeListQuery, MediaSort } from '@/graphql/generated';
-import {Skeletons, Anime, Typography} from '@/components';
+import { Skeletons, Anime, Typography } from '@/components';
 import { genres } from '@/src/utils';
 import {
   TextField,
@@ -19,7 +19,7 @@ import {
 } from '@mui/material';
 
 export default function AnimeList() {
-  const searchRef = useRef<HTMLInputElement | null>(null)
+  const searchRef = useRef<HTMLInputElement | null>(null);
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
   const [sort, setSort] = useState(false);
   const [genre, setGenre] = useState<string[]>([]);
@@ -56,14 +56,14 @@ export default function AnimeList() {
         <div>
           <TextField
             inputRef={searchRef}
-            name="search"
+            name='search'
             label='Search'
             color='primary'
             focused
             sx={{ color: 'white' }}
           />
           <Button
-            id="search-submit-button"
+            id='search-submit-button'
             onClick={handleSearchQueryChange}
             variant='contained'
             sx={{ height: '100%', marginLeft: 1 }}
@@ -77,6 +77,16 @@ export default function AnimeList() {
               Genre
             </InputLabel>
             <Select
+              MenuProps={{
+                sx: {
+                  '&& .Mui-selected': {
+                    backgroundColor: '#1976d2'
+                  },
+                  '&& .MuiMenuItem-root:hover': {
+                    backgroundColor: '#1976d2'
+                  }
+                }
+              }}
               multiple
               value={genre}
               onChange={handleChangeGenre}
@@ -115,7 +125,7 @@ export default function AnimeList() {
           </Button>
         </Box>
       </div>
-      <div className="search-results-container">
+      <div className='search-results-container'>
         <Typography variant='title-1' tag='h2'>
           Results: {data?.Page?.pageInfo?.total}
         </Typography>
