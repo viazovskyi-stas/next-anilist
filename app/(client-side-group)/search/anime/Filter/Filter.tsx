@@ -42,7 +42,7 @@ const Filter = () => {
 
   useUpdateEffect(() => {
     // Todo optimise (next 13 router not finished so make it by myself
-    // shallow url set not working
+    // Todo shallow url set not working (next 13)
 
     const query: Record<string, string> = {
       sort: sort ? MediaSort.Popularity : MediaSort.PopularityDesc
@@ -81,7 +81,7 @@ const Filter = () => {
       <div>
         <FormControl sx={{ ml: 1, width: 200, height: 40 }}>
           <InputLabel id='demo-multiple-chip-label' sx={{ color: '#1976d2' }}>
-            Genre
+            Genres
           </InputLabel>
           <Select
             MenuProps={{
