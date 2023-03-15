@@ -83,7 +83,7 @@ export default function AnimeList() {
                     backgroundColor: '#1976d2'
                   },
                   '&& .MuiMenuItem-root:hover': {
-                    backgroundColor: '#1976d2'
+                    backgroundColor: '#669dd5'
                   }
                 }
               }}
