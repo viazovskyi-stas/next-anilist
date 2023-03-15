@@ -12,13 +12,13 @@ import {
   SelectChangeEvent,
   TextField
 } from '@mui/material';
-import styles from './SearchGroup.module.scss';
+import styles from './Filter.module.scss';
 import { genres as genresMock } from '@/src/utils';
 import { useRouter } from 'next/navigation';
 import { MediaSort } from '@/graphql/generated';
 import { useUpdateEffect } from 'usehooks-ts';
 
-const SearchGroup = () => {
+const Filter = () => {
   const router = useRouter();
   const searchRef = useRef<HTMLInputElement | null>(null);
   const [searchQuery, setSearchQuery] = useState<string | null>(null);
@@ -135,4 +135,4 @@ const SearchGroup = () => {
   );
 };
 
-export default SearchGroup;
+export default Filter;

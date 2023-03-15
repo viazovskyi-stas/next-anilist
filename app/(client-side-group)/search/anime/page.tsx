@@ -4,7 +4,7 @@ import styles from './page.module.css';
 import React from 'react';
 import { MediaSort, useGetAnimeListQuery } from '@/graphql/generated';
 import { Skeletons, Anime, Typography } from '@/components';
-import SearchGroup from './Filter/SearchGroup';
+import Filter from './Filter/Filter';
 import { useSearchParams } from 'next/navigation';
 
 export default function AnimePage() {
@@ -25,7 +25,7 @@ export default function AnimePage() {
       <Typography variant='title-1' tag='h2'>
         🚀 Anime list app
       </Typography>
-      <SearchGroup />
+      <Filter />
       <div className='search-results-container'>
         <Typography variant='title-1' tag='h2'>
           Results: {data?.Page?.pageInfo?.total}
