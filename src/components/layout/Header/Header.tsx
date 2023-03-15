@@ -15,7 +15,7 @@ export const Header: React.FC = () => (
       <ul className={styles.links}>
         <li>
           <Typography variant='sub-title-2'>
-            <Link prefetch={false} href={ROUTES.ANIME_LIST}>
+            <Link prefetch={false} href={ROUTES.SEARCH_ANIME}>
               Anime list
             </Link>
           </Typography>

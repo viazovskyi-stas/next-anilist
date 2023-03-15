@@ -1,4 +1,4 @@
 export const ROUTES = {
   ROOT: '/',
-  ANIME_LIST: '/anime-list',
+  SEARCH_ANIME: '/search/anime'
 };
