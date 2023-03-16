@@ -6,19 +6,19 @@ const seo = {
   description: 'Omg its anime?'
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang='en'>
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
+  <html lang='en'>
     <head>
       <title>{seo.title}</title>
-      <meta name='description' content={seo.description} />
-      <meta name='viewport' content='width=device-width,initial-scale=1' />
+      <meta content={seo.description} name='description' />
+      <meta content='width=device-width,initial-scale=1' name='viewport' />
     </head>
-      <body>
-          <Layout.Header />
-          {children}
-          {/*<Layout.Footer />*/}
-      </body>
-    </html>
-  );
-}
+    <body>
+      <Layout.Header />
+      {children}
+      {/* <Layout.Footer /> */}
+    </body>
+  </html>
+);
+
+export default RootLayout;

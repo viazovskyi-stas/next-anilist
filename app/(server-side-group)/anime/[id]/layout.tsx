@@ -3,6 +3,6 @@ export const metadata = {
   description: 'Anime list cards'
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
-}
+const RootLayout = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+
+export default RootLayout;

@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+
 import {
   Box,
   Button,
@@ -12,11 +12,14 @@ import {
   SelectChangeEvent,
   TextField
 } from '@mui/material';
-import styles from './Filter.module.scss';
-import { genres as genresMock } from '@/src/utils';
 import { useRouter } from 'next/navigation';
-import { MediaSort } from '@/graphql/generated';
+import React, { useRef, useState } from 'react';
 import { useUpdateEffect } from 'usehooks-ts';
+
+import { MediaSort } from '@/graphql/generated';
+import { genres as genresMock } from '@/src/utils';
+
+import styles from './Filter.module.scss';
 
 const Filter = () => {
   const router = useRouter();
@@ -62,28 +65,31 @@ const Filter = () => {
     <div className={styles.filterGroup}>
       <div>
         <TextField
-          inputRef={searchRef}
-          name='search'
-          label='Search'
-          color='primary'
           focused
+          color='primary'
+          inputRef={searchRef}
+          label='Search'
+          name='search'
           sx={{ color: 'white' }}
         />
         <Button
           id='search-submit-button'
-          onClick={handleSearchQueryChange}
-          variant='contained'
           sx={{ height: '100%', marginLeft: 1 }}
+          variant='contained'
+          onClick={handleSearchQueryChange}
         >
           Search
         </Button>
       </div>
       <div>
-        <FormControl sx={{ ml: 1, width: 200, height: 40 }}>
+        <FormControl sx={{ ml: 1, height: 40, width: 200 }}>
           <InputLabel id='demo-multiple-chip-label' sx={{ color: '#1976d2' }}>
             Genres
           </InputLabel>
           <Select
+            multiple
+            input={<OutlinedInput id='select-multiple-chip' label='Genre' />}
+            value={genres}
             MenuProps={{
               sx: {
                 '&& .Mui-selected': {
@@ -94,25 +100,17 @@ const Filter = () => {
                 }
               }
             }}
-            multiple
-            value={genres}
-            onChange={handleChangeGenre}
-            input={<OutlinedInput id='select-multiple-chip' label='Genre' />}
             renderValue={(selected: string[]) => (
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                 {selected.length && (
-                  <Chip key={selected[0]} label={selected[0]} color='primary' size='small' />
+                  <Chip key={selected[0]} color='primary' label={selected[0]} size='small' />
                 )}
                 {selected.length > 1 && (
-                  <Chip
-                    key={'more'}
-                    label={`+${selected.length - 1}`}
-                    color='primary'
-                    size='small'
-                  />
+                  <Chip key='more' color='primary' label={`+${selected.length - 1}`} size='small' />
                 )}
               </Box>
             )}
+            onChange={handleChangeGenre}
           >
             {genresMock.map(({ id, name }) => (
               <MenuItem key={id} value={name}>
@@ -124,9 +122,9 @@ const Filter = () => {
       </div>
       <Box sx={{ marginLeft: 'auto' }}>
         <Button
-          onClick={handleChangeSort}
-          variant='contained'
           sx={{ height: '100%', marginLeft: 1 }}
+          variant='contained'
+          onClick={handleChangeSort}
         >
           Sort by popularity {sort ? 'ASC' : 'DESK'}
         </Button>

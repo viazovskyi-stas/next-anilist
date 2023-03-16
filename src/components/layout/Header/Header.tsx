@@ -8,15 +8,15 @@ import styles from './Header.module.scss';
 
 export const Header: React.FC = () => (
   <header className={styles.header}>
-    <Link prefetch={false} href={ROUTES.ROOT}>
+    <Link href={ROUTES.ROOT} prefetch={false}>
       <Logo className={styles.logo} />
     </Link>
     <nav>
       <ul className={styles.links}>
         <li>
           <Typography variant='sub-title-2'>
-            <Link prefetch={false} href={ROUTES.SEARCH_ANIME}>
-              Anime list
+            <Link href={ROUTES.SEARCH_ANIME} prefetch={false}>
+              Search
             </Link>
           </Typography>
         </li>

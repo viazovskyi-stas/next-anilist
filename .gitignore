@@ -2,6 +2,9 @@
 ./.idea
 ./vscode
 
+#yarn
+yarn.lock
+
 # dependencies
 /node_modules
 /.pnp
